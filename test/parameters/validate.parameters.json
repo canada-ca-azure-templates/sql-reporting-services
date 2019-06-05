@@ -46,7 +46,7 @@
         "vmObject": {
             "value": {
                 "comment": "This is for the sql server reporting services",
-                "resourceGroup": "PwS2-GCPS-CRM-SSRS-RG",
+                "resourceGroup": "PwS2-validate-sql-reporting-services-RG",
                 "vmKeyVault": {
                     "keyVaultResourceGroupName": "PwS2-GCPS-CRM-KeyVault-RG",
                     "keyVaultName": "PwS2-CRMSQL-Keyvault",
@@ -80,7 +80,7 @@
                     "bootDiagnostic": true,
                     "backupConfig": {
                         "existingBackupVaultRG": "PwS2-validate-sql-reporting-services-RG",
-                        "existingBackupVaultName": "PwS2-SSRS-Backup-Vault",
+                        "existingBackupVaultName": "PwS2-SSRS-Backup125k-Vault",
                         "existingBackupPolicy": "DailyBackupPolicy"
                     },
                     "storageProfile": {
@@ -112,7 +112,7 @@
                     "name": "PwS2-RS1-NIC",
                     "acceleratedNetworking": false,
                     "vnetResourceGroupName": "PwS2-Infra-NetShared-RG",
-                    "vnetName": "PwS2-validate-SSRS-VNET",
+                    "vnetName": "PwS2-validate-sql-server-cluster-VNET",
                     "subnetName": "APP"
                 },
                 "tagValues": {

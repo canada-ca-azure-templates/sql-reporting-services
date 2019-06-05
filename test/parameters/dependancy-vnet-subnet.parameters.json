@@ -5,7 +5,7 @@
         "vnetArray": {
             "value": [
                 {
-                    "name": "PwS2-validate-SSRS-VNET",
+                    "name": "PwS2-validate-sql-server-cluster-VNET",
                     "resourceGroup": "PwS2-validate-sql-reporting-services-RG",
                     "addressPrefixes": [
                         "10.250.0.0/20"
@@ -20,7 +20,7 @@
                         {
                             "name": "DB",
                             "properties": {
-                                "addressPrefix": "10.250.29.0/26"
+                                "addressPrefix": "10.250.2.0/26"
                             }
                         }
                     ],
