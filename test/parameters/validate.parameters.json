@@ -80,7 +80,7 @@
                     "bootDiagnostic": true,
                     "backupConfig": {
                         "existingBackupVaultRG": "PwS2-validate-sql-reporting-services-RG",
-                        "existingBackupVaultName": "PwS2-SSRS-Backup-Vault124k",
+                        "existingBackupVaultName": "PwS2-SSRS-Backup124k-Vault",
                         "existingBackupPolicy": "DailyBackupPolicy"
                     },
                     "storageProfile": {

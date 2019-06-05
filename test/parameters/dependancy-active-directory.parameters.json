@@ -6,7 +6,7 @@
             "value": "PwS2-validate-sql-reporting-services-RG"
         },
         "keyVaultName": {
-            "value": "PwS2-SSRS-Backup-Vault124k"
+            "value": "PwS2-SSRS-KeyVault"
         },
         "DomainName": {
             "value": "pspc.gc.ca.local"
