@@ -1,0 +1,171 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "containerSaSToken":{
+            "type": "string"
+        },
+        "computerName":{
+            "type": "string"
+        },
+        "scriptsBaseUrl": {
+            "type": "string",
+            "metadata": {
+                "description": "DSC Scripts base url"
+            },
+            "defaultValue": "[concat(uri(deployment().properties.templateLink.uri, 'DSC'))]"
+        },
+        "sqlLb":{
+            "type": "string"
+        },
+        "adminUsername":{
+            "type": "string"
+        },
+        "adminPassword": {
+            "type": "securestring",
+            "metadata": {
+                "description": "password passed in by keyvault"
+            }
+        },
+        "tagValues":{
+            "type": "object"
+        },
+        "sqlPatchingConfig": {
+            "type": "object"
+        },
+        "sqlBackupConfig": {
+            "type": "object"
+        },
+        "numberOfDisks": {
+            "type": "string"
+        },
+        "workloadType": {
+            "type": "string"
+        },
+        "rServicesEnabled":{
+            "type": "bool",
+            "defaultValue": false
+        },
+        "sqlConnectivityType":{
+            "type": "string",
+            "defaultValue": "Private"
+        },
+        "sqlPortNumber":{
+            "type": "int",
+            "defaultValue": 1433
+        },
+        "sqlStorageDisksConfigurationType":{
+            "type": "string",
+            "defaultValue": "NEW"
+        },
+        "sqlStorageStartingDeviceId":{
+           "type": "int",
+           "defaultValue": 2
+        },
+        "sqlServerLicenseType":{
+            "type":"string",
+            "defaultValue": "PAYG"
+        },
+        "keyVaultCredentialSettings":{
+            "type": "object",
+            "defaultValue": {
+                "Enable": false,
+                "CredentialName": ""
+            }
+        },
+        "sqlStorageAccountName":{
+            "type": "string"
+        }
+    },
+    "variables": {
+        "sqlModuleUrl": "[concat(parameters('scriptsBaseUrl'),'/PrepareSqlServer.ps1.zip', parameters('containerSasToken'))]",
+        "rsConfigurationConfigurationFunction": "PrepareRsServer.ps1\\PrepareSSRSServer"
+    },
+    
+    "resources": [
+        {
+            "apiVersion": "2018-06-01",
+            "type": "Microsoft.Compute/virtualMachines/extensions",
+            "name": "[concat(parameters('computerName'), '/configureSSRS')]",
+            "location": "[resourceGroup().location]",
+            "tags": "[parameters('tagValues')]",
+            "properties": {
+              "publisher": "Microsoft.Powershell",
+              "type": "DSC",
+              "typeHandlerVersion": "2.19",
+              "autoUpgradeMinorVersion": true,
+              "settings": {
+                "modulesUrl": "[variables('sqlModuleUrl')]",
+                "configurationFunction": "[variables('rsConfigurationConfigurationFunction')]",
+                "properties": {
+                  "SQLSAAdminAuthCreds": {
+                    "userName": "[parameters('adminUserName')]",
+                    "Password": "privateSettingsRef:SAPassword"
+                  },
+                  "CatalogMachine": "[parameters('sqlLb')]"
+                }
+              },
+              "protectedSettings": {
+                "Items": {
+                  "SAPassword": "[parameters('adminPassword')]"
+                }
+              }
+            }
+          },
+          {
+            "name": "[parameters('computerName')]",
+            "type": "Microsoft.SqlVirtualMachine/SqlVirtualMachines",
+            "apiVersion": "2017-03-01-preview",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "virtualMachineResourceId": "[resourceId('Microsoft.Compute/virtualMachines', concat(parameters('sqlVMName'),copyIndex()))]",
+                "SqlServerLicenseType": "[parameters('sqlServerLicenseType')]",
+                "AutoPatchingSettings": {
+                    "Enable": "[parameters('sqlPatchingConfig').patchingEnabled]",
+                    "DayOfWeek": "[parameters('sqlPatchingConfig').dayOfWeek]",
+                    "MaintenanceWindowStartingHour": "[parameters('sqlPatchingConfig').maintenanceWindowStartingHour]",
+                    "MaintenanceWindowDuration":"[parameters('sqlPatchingConfig').maintenanceWindowDuration]"
+                },
+                "AutoBackupSettings": {
+                    "Enable": "[parameters('sqlBackupConfig').backupEnabled]",
+                    "RetentionPeriod": "[parameters('sqlBackupConfig').retentionPeriod]",
+                    "EnableEncryption": "[parameters('sqlBackupConfig').enableEncryption]",
+                    "BackupSystemDbs": "[parameters('sqlBackupConfig').backupSystemDbs]",
+                    "BackupScheduleType": "[parameters('sqlBackupConfig').backupScheduleType]",
+                    "FullBackupFrequency": "[parameters('sqlBackupConfig').fullBackupFrequency]",
+                    "FullBackupStartTime": "[parameters('sqlBackupConfig').fullBackupStartTime]",
+                    "FullBackupWindowHours": "[parameters('sqlBackupConfig').fullBackupWindowHours]",
+                    "LogBackupFrequency": "[parameters('sqlBackupConfig').logBackupFrequency]",
+                    "Password": "[parameters('sqlBackupConfig').password]",
+                    "StorageAccountUrl": "[reference(resourceId('Microsoft.Storage/storageAccounts', concat('sqlbackup',uniquestring(parameters('sqlStorageAccountName')))), '2018-07-01').primaryEndpoints['blob']]",
+                    "StorageAccessKey": "[first(listKeys(resourceId('Microsoft.Storage/storageAccounts', concat('sqlbackup',uniquestring(parameters('sqlStorageAccountName')))), '2018-07-01').keys).value]"
+                },
+                "KeyVaultCredentialSettings": 
+                {
+                  "Enable": "[parameters('keyVaultCredentialSettings').Enabled]",
+                    "CredentialName": "[parameters('keyVaultCredentialSettings').CredentialName]"
+                },
+                "ServerConfigurationsManagementSettings": {
+                    "SQLConnectivityUpdateSettings": {
+                        "ConnectivityType": "[parameters('sqlConnectivityType')]",
+                        "Port": "[parameters('sqlPortNumber')]",
+                        "SQLAuthUpdateUserName": "",
+                        "SQLAuthUpdatePassword": ""
+                    },
+                    "SQLWorkloadTypeUpdateSettings": {
+                        "SQLWorkloadType": "[parameters('workloadType')]"
+                    },
+                    "SQLStorageUpdateSettings": {
+                        "DiskCount": "[parameters('numberOfDisks')]",
+                        "DiskConfigurationType": "[parameters('sqlStorageDisksConfigurationType')]",
+                        "StartingDeviceID": "[parameters('sqlStorageStartingDeviceId')]"
+                    },
+                    "AdditionalFeaturesServerConfigurations": {
+                        "IsRServicesEnabled": "[parameters('rServicesEnabled')]"
+                    }
+                }
+            }
+        }
+    ],
+    "outputs": {}
+}

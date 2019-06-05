@@ -1,0 +1,17 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "deploymentRGArray": {
+            "value": [
+                {
+                    "name": "active-directory",
+                    "resourceGroup": "PwS2-SSRS-RG",
+                    "templateLink": "https://raw.githubusercontent.com/canada-ca-azure-templates/active-directory/20190516/template/azuredeploy.json",
+                    "parametersFile": "dependancy-active-directory.parameters.json"
+                }
+
+            ]
+        }
+    }
+}
