@@ -112,7 +112,7 @@
                     "name": "PwS2-RS1-NIC",
                     "acceleratedNetworking": false,
                     "vnetResourceGroupName": "PwS2-Infra-NetShared-RG",
-                    "vnetName": "PwS2-validate-SSRS-VNET",
+                    "vnetName": "PwS2-validate-sql-server-cluster-VNET",
                     "subnetName": "APP"
                 },
                 "tagValues": {
