@@ -46,7 +46,7 @@
         "vmObject": {
             "value": {
                 "comment": "This is for the sql server reporting services",
-                "resourceGroup": "PwS2-GCPS-CRM-SSRS-RG",
+                "resourceGroup": "PwS2-validate-sql-reporting-services-RG",
                 "vmKeyVault": {
                     "keyVaultResourceGroupName": "PwS2-GCPS-CRM-KeyVault-RG",
                     "keyVaultName": "PwS2-CRMSQL-Keyvault",
