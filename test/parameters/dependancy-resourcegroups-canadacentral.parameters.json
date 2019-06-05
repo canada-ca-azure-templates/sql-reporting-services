@@ -8,7 +8,7 @@
         "rgNames": {
             "value": [
                 {
-                    "resourceGroup": "v"
+                    "resourceGroup": "PwS2-validate-sql-reporting-services-RG"
                 }
             ]
         },
