@@ -217,6 +217,27 @@
             }
         },
         {
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[concat('sqlbackup',uniquestring(parameters('sqlSettings').sqlStorageAccountName))]",
+            "apiVersion": "2019-04-01",
+            "location": "[resourceGroup().location]",
+            "tags": "[parameters('tagValues')]",
+            "kind": "Storage",
+            "sku": {
+              "name":"[parameters('sqlSettings').SqlStorageAccountType]"
+            },
+            "properties": {
+              "encryption": {
+                "keySource": "Microsoft.Storage",
+                "services": {
+                  "blob": {
+                    "enabled": "[parameters('sqlSettings').blobEncryptionEnabled]"
+                  }
+                }
+              }
+            }
+        },
+        {
             "name": "[concat('DSC-', parameters('vmObject').vm.computerName, copyIndex(1))]",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2017-05-10",
