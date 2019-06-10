@@ -55,6 +55,11 @@ if (-not $devopsCICD) {
 if ($subscription -ne "") {
     Select-AzureRmSubscription -Subscription $subscription
 }
+else 
+{
+    Select-azureRMSubscription -SubscriptionId 2de839a0-37f9-4163-a32a-e1bdb8d6eb7e
+}
+
 
 # Cleanup validation resource content in case it did not properly completed and left over components are still lingeringcd
 if (-not $doNotCleanup) {
