@@ -37,7 +37,7 @@
                     "password": "Canada123!"
                 },
                 "workloadType": "OLTP",
-                "sqlStorageAccountName": "ssrsstorage11"
+                "sqlStorageAccountName": "ssrsstorage1"
             }
         },
         "vmBaseUrl": {
@@ -80,7 +80,7 @@
                     "bootDiagnostic": true,
                     "backupConfig": {
                         "existingBackupVaultRG": "PwS2-validate-sql-reporting-services-RG",
-                        "existingBackupVaultName": "PwS2-SSRS-Backup127m-Vault",
+                        "existingBackupVaultName": "PwS2-SSRS-Backup128n-Vault",
                         "existingBackupPolicy": "DailyBackupPolicy"
                     },
                     "storageProfile": {
