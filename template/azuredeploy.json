@@ -149,6 +149,10 @@
                 "name": "vmObj",
                 "count": "[parameters('vmObject').numberOfVMInstances]"
             },
+            "dependsOn": [
+                "[concat('sqlbackup',uniquestring(parameters('sqlSettings').sqlStorageAccountName))]",
+                "[variables('availabilitySetName')]"
+            ],
             "properties": {
                 "mode": "Incremental",
                 "parameters": {
