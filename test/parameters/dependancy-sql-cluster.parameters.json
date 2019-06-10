@@ -112,7 +112,7 @@
         "backupConfig": {
             "value": {
                 "existingBackupVaultRG": "PwS2-validate-sql-reporting-services-RG",
-                "existingBackupVaultName": "PwS2-SSRS-Backup129p-Vault",
+                "existingBackupVaultName": "PwS2-SSRS-Backup130q-Vault",
                 "existingBackupPolicy": "DailyBackupPolicy"
             }
         },
