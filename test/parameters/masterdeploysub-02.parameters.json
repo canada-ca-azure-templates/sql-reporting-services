@@ -14,7 +14,10 @@
                     "name": "sql-server",
                     "resourceGroup": "PwS2-validate-sql-reporting-services-RG",
                     "templateLink": "https://raw.githubusercontent.com/canada-ca-azure-templates/sql-server-cluster/20190604/template/azuredeploy.json",
-                    "parametersFile": "dependancy-active-directory.parameters.json"
+                    "parametersFile": "dependancy-active-directory.parameters.json",
+                    "dependsOn": [
+                        "active-directory"
+                    ]
                 }
 
             ]
