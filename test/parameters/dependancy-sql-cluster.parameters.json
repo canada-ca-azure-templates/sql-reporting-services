@@ -15,9 +15,9 @@
         },
         "vnetConfig": {
             "value": {
-                "existingVnetName": "PwS2-validate-sql-reporting-services-RG",
+                "existingVnetName": "PwS2-validate-sql-reporting-services-VNET",
                 "existingVnetRG": "PwS2-validate-sql-reporting-services-RG",
-                "sqlSubnet": "10.2.2.0/26",
+                "sqlSubnet": "10.250.2.0/26",
                 "dbSubnetName": "DB"
             }
         },
@@ -112,7 +112,7 @@
         "backupConfig": {
             "value": {
                 "existingBackupVaultRG": "PwS2-validate-sql-reporting-services-RG",
-                "existingBackupVaultName": "PwS2-SSRS-Backup130q-Vault",
+                "existingBackupVaultName": "PwS2-SSRS-Backup131q-Vault",
                 "existingBackupPolicy": "DailyBackupPolicy"
             }
         },
