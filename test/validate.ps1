@@ -77,6 +77,7 @@ if (-not $doNotDeployPreReq) {
     Write-Host "Starting $templateLibraryName dependancies deployment...";
 
     New-AzureRmDeployment -Location $Location -Name "Deploy-$templateLibraryName-Dependancies-01" -TemplateUri "https://raw.githubusercontent.com/canada-ca-azure-templates/masterdeploy/20190514/template/masterdeploysubrg.json" -TemplateParameterFile (Resolve-Path -Path "$PSScriptRoot\parameters\masterdeploysub-01.parameters.json") -baseParametersURL $baseParametersURL -Verbose;
+    Write-Host "Deploying AD and SQL Server"
     New-AzureRmDeployment -Location $Location -Name "Deploy-$templateLibraryName-Dependancies-02" -TemplateUri "https://raw.githubusercontent.com/canada-ca-azure-templates/masterdeploy/20190514/template/masterdeployrg.json" -TemplateParameterFile (Resolve-Path -Path "$PSScriptRoot\parameters\masterdeploysub-02.parameters.json") -baseParametersURL $baseParametersURL -Verbose;
 
     $provisionningState = (Get-AzureRmDeployment -Name "Deploy-$templateLibraryName-Dependancies-01").ProvisioningState
