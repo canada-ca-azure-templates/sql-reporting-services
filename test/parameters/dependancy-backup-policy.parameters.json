@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
       "vaultName": {
-        "value": "PwS2-SSRS-Backup131q-Vault"
+        "value": "PwS2-SSRS-Backup131r-Vault"
       },
       "policyName": {
           "value": "DailyBackupPolicy"
