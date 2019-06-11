@@ -37,7 +37,13 @@
                     "password": "Canada123!"
                 },
                 "workloadType": "OLTP",
-                "sqlStorageAccountName": "ssrsstorage1"
+                "sqlServerServiceAccountUserName": "svc-spsql1",
+                "sqlStorageAccountName": "sqlstorage1",
+                "sqlStorageAccountType": "Standard_LRS",
+                "diagBlobEncryptionEnabled": true,
+                "sqlDatabases": "TestDB",
+                "sqlServerServiceAccountPassword": "sqlServerServiceAccountPassword",
+                "enableAcceleratedNetworking": false
             }
         },
         "vmBaseUrl": {
