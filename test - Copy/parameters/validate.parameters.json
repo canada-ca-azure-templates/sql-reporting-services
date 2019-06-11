@@ -1,0 +1,124 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "containerSasToken": {
+            "value": ""
+        },
+        "sqlSettings": {
+            "value": {
+                "dbSAUsername": "shared\\azureadmin",
+                "dbSAUserPasswordKey": "server2016DefaultPassword",
+                "sqlLB": "10.250.2.8",
+                "sqlServerLicenseType": "AHUB",
+                "numberOfSqlVMDisks": 1,
+                "sqlpatchingConfig": {
+                    "patchingEnabled": true,
+                    "dayOfWeek": "Sunday",
+                    "maintenanceWindowStartingHour": "2",
+                    "maintenanceWindowDuration": 60
+                },
+                "backupConfig": {
+                    "backupEnabled": true,
+                    "RetentionPeriod": 30,
+                    "EnableEncryption": true
+                },
+                "rServicesEnabled": true,
+                "sqlBackupConfig": {
+                    "backupEnabled": true,
+                    "retentionPeriod": 30,
+                    "enableEncryption": true,
+                    "backupSystemDbs": true,
+                    "backupScheduleType": "Manual",
+                    "fullBackupFrequency": "Daily",
+                    "fullBackupStartTime": 2,
+                    "fullBackupWindowHours": 5,
+                    "logBackupFrequency": 60,
+                    "password": "Canada123!"
+                },
+                "workloadType": "OLTP",
+                "sqlStorageAccountName": "ssrsstorage1"
+            }
+        },
+        "vmBaseUrl": {
+            "value": "https://raw.githubusercontent.com/canada-ca-azure-templates/servers/20190506/template/servers.json"
+        },
+        "vmObject": {
+            "value": {
+                "comment": "This is for the sql server reporting services",
+                "resourceGroup": "PwS2-validate-sql-reporting-services-RG",
+                "vmKeyVault": {
+                    "keyVaultResourceGroupName": "PwS2-validate-sql-reporting-services-RG",
+                    "keyVaultName": "PwS2-SSRS-KeyVault"
+                },
+                "domainObject": {
+                    "domainToJoin": "pspc.gc.ca.local",
+                    "domainUsername": "azureadmin",
+                    "domainAdminPasswordKey": "adDefaultPassword",
+                    "domainJoinOptions": 3,
+                    "ouPath": "CN=Computers,DC=shared,DC=pws3,DC=pspc,DC=gc,DC=ca, DC=local"
+                },
+                "numberOfVMInstances": 1,
+                "deploymentSuffix": "PwS2-RS",
+                "vm": {
+                    "computerName": "PwS2-RS",
+                    "adminUsername": "azureadmin",
+                    "licenseType": "Windows_Server",
+                    "shutdownConfig": {
+                        "autoShutdownStatus": "Enabled",
+                        "autoShutdownTime": "19:00",
+                        "autoShutdownTimeZone": "Eastern Standard Time",
+                        "autoShutdownNotificationStatus": "Disabled"
+                    },
+                    "vmSize": "Standard_DS3_v2",
+                    "bootDiagnostic": true,
+                    "backupConfig": {
+                        "existingBackupVaultRG": "PwS2-validate-sql-reporting-services-RG",
+                        "existingBackupVaultName": "PwS2-SSRS-Backup131r-Vault",
+                        "existingBackupPolicy": "DailyBackupPolicy"
+                    },
+                    "storageProfile": {
+                        "osDisk": {
+                            "createOption": "fromImage",
+                            "caching": "ReadWrite",
+                            "managedDisk": {
+                                "storageAccountType": "StandardSSD_LRS"
+                            }
+                        },
+                        "dataDisks": [                         
+                        ],
+                        "imageReference": {
+                            "publisher": "MicrosoftSQLServer",
+                            "offer": "SQL2016SP2-WS2016",
+                            "sku": "Enterprise",
+                            "version": "latest"
+                        }
+                    },
+                    "availabilitySetName": "PwS2-RS-AS"
+                },
+                "networkSecurityGroups": {
+                    "name": "PwS2-RS-NSG",
+                    "properties": {
+                        "securityRules": []
+                    }
+                },
+                "networkInterfaces": {
+                    "name": "PwS2-RS1-NIC",
+                    "acceleratedNetworking": false,
+                    "vnetResourceGroupName": "PwS2-validate-sql-reporting-services-RG",
+                    "vnetName": "PwS2-validate-sql-reporting-services-VNET",
+                    "subnetName": "APP"
+                },
+                "tagValues": {
+                    "Owner": "test.server@tpsgc-pwgsc.gc.ca",
+                    "CostCenter": "PSPC-EA",
+                    "Enviroment": "Sandbox",
+                    "Classification": "Unclassified",
+                    "Organizations": "PSPC-CCC-E&O",
+                    "DeploymentVersion": "2019-01-24",
+                    "Workload": "Report Server"
+                }
+            }
+        }
+    }
+}
