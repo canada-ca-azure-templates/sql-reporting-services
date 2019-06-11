@@ -49,13 +49,7 @@
                 "resourceGroup": "PwS2-validate-sql-reporting-services-RG",
                 "vmKeyVault": {
                     "keyVaultResourceGroupName": "PwS2-validate-sql-reporting-services-RG",
-                    "keyVaultName": "PwS2-SSRS-KeyVault",
-                    "vaultCertificates": [
-                        {
-                            "certificateUrl": "https://PwS2-crmsql-keyvault.vault.azure.net/secrets/gccase/0d4e51ee911c4a8ca4a117d4060ca4e6",
-                            "certificateStore": "My"
-                        }
-                    ]
+                    "keyVaultName": "PwS2-SSRS-KeyVault"
                 },
                 "domainObject": {
                     "domainToJoin": "pspc.gc.ca.local",
