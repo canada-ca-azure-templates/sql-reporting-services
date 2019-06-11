@@ -48,8 +48,8 @@
                 "comment": "This is for the sql server reporting services",
                 "resourceGroup": "PwS2-validate-sql-reporting-services-RG",
                 "vmKeyVault": {
-                    "keyVaultResourceGroupName": "PwS2-GCPS-CRM-KeyVault-RG",
-                    "keyVaultName": "PwS2-CRMSQL-Keyvault",
+                    "keyVaultResourceGroupName": "PwS2-validate-sql-reporting-services-RG",
+                    "keyVaultName": "PwS2-SSRS-KeyVault",
                     "vaultCertificates": [
                         {
                             "certificateUrl": "https://PwS2-crmsql-keyvault.vault.azure.net/secrets/gccase/0d4e51ee911c4a8ca4a117d4060ca4e6",
@@ -111,8 +111,8 @@
                 "networkInterfaces": {
                     "name": "PwS2-RS1-NIC",
                     "acceleratedNetworking": false,
-                    "vnetResourceGroupName": "PwS2-Infra-NetShared-RG",
-                    "vnetName": "PwS2-validate-sql-server-cluster-VNET",
+                    "vnetResourceGroupName": "PwS2-validate-sql-reporting-services-RG",
+                    "vnetName": "PwS2-validate-sql-reporting-services-VNET",
                     "subnetName": "APP"
                 },
                 "tagValues": {
