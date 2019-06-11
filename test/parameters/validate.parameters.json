@@ -38,7 +38,7 @@
                 },
                 "workloadType": "OLTP",
                 "sqlServerServiceAccountUserName": "svc-spsql1",
-                "sqlStorageAccountName": "sqlstorage1",
+                "sqlStorageAccountName": "ssrsstorage1",
                 "sqlStorageAccountType": "Standard_LRS",
                 "diagBlobEncryptionEnabled": true,
                 "sqlDatabases": "TestDB",
