@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "backupVaultName": {
-            "value": "PwS2-Sql-BackupVault130a"
+            "value": "PwS2-Sql-BackupVault131b"
         },
         "backupVaultRGName": {
             "value": "PwS2-validate-sql-reporting-services-RG"
