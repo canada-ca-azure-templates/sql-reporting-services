@@ -11,7 +11,7 @@
                 "resourceGroup": "PwS2-validate-sql-reporting-services-RG",
                 "vmKeyVault": {
                     "keyVaultResourceGroupName": "PwS2-validate-sql-reporting-services-RG",
-                    "keyVaultName": "PwS2-SSRS-KeyVault"
+                    "keyVaultName": "PwS2-Sql-cqos27-KeyVault"
                 },
                 "domainObject": {
                     "domainToJoin": "pspc.gc.ca.local",
