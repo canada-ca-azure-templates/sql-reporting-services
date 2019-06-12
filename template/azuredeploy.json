@@ -225,7 +225,7 @@
             "name": "[concat('sqlbackup',uniquestring(parameters('sqlSettings').sqlStorageAccountName))]",
             "apiVersion": "2019-04-01",
             "location": "[resourceGroup().location]",
-            "tags": "[parameters('tagValues')]",
+            "tags": "[parameters('vmObject').tagValues]",
             "kind": "Storage",
             "sku": {
               "name":"[parameters('sqlSettings').SqlStorageAccountType]"

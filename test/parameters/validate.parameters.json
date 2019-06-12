@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "vmBaseUrl": {
-            "value": "https://raw.githubusercontent.com/canada-ca-azure-templates/servers/20190506/template/servers.json"
+            "value": "https://raw.githubusercontent.com/canada-ca-azure-templates/servers/20190611/template/servers.json"
         },
         "vmObject": {
             "value": {
