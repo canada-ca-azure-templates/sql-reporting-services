@@ -28,7 +28,8 @@
             }
         },
         "tagValues":{
-            "type": "object"
+            "type": "object",
+            "defaultValue": ""
         },
         "sqlPatchingConfig": {
             "type": "object"
