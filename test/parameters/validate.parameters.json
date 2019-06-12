@@ -2,64 +2,11 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "containerSasToken": {
-            "value": ""
-        },
-        "sqlSettings": {
-            "value": {
-                "dbSAUsername": "shared\\azureadmin",
-                "dbSAUserPasswordKey": "server2016DefaultPassword",
-                "sqlLB": "10.250.2.8",
-                "sqlServerLicenseType": "AHUB",
-                "numberOfSqlVMDisks": 1,
-                "sqlpatchingConfig": {
-                    "patchingEnabled": true,
-                    "dayOfWeek": "Sunday",
-                    "maintenanceWindowStartingHour": "2",
-                    "maintenanceWindowDuration": 60
-                },
-                "backupConfig": {
-                    "backupEnabled": true,
-                    "RetentionPeriod": 30,
-                    "EnableEncryption": true
-                },
-                "rServicesEnabled": true,
-                "sqlBackupConfig": {
-                    "backupEnabled": true,
-                    "retentionPeriod": 30,
-                    "enableEncryption": true,
-                    "backupSystemDbs": true,
-                    "backupScheduleType": "Manual",
-                    "fullBackupFrequency": "Daily",
-                    "fullBackupStartTime": 2,
-                    "fullBackupWindowHours": 5,
-                    "logBackupFrequency": 60,
-                    "password": "Canada123!"
-                },
-                "workloadType": "OLTP",
-                "sqlServerServiceAccountUserName": "svc-spsql1",
-                "sqlStorageAccountName": "ssrsstorage1",
-                "sqlStorageAccountType": "Standard_LRS",
-                "diagBlobEncryptionEnabled": true,
-                "sqlDatabases": "TestDB",
-                "sqlServerServiceAccountPassword": "sqlServerServiceAccountPassword",
-                "enableAcceleratedNetworking": false
-            }
-        },
         "vmBaseUrl": {
             "value": "https://raw.githubusercontent.com/canada-ca-azure-templates/servers/20190506/template/servers.json"
         },
         "vmObject": {
             "value": {
-                "tagValues": {
-                    "Owner": "john.nephin@tpsgc-pwgsc.gc.ca",
-                    "CostCenter": "PSPC-EA",
-                    "Enviroment": "Sandbox",
-                    "Classification": "Unclassified",
-                    "Organizations": "PSPC-CCC-E&O",
-                    "DeploymentVersion": "2019-01-24",
-                    "Workload": "Report Server"
-                },
                 "comment": "This is for the sql server reporting services",
                 "resourceGroup": "PwS2-validate-sql-reporting-services-RG",
                 "vmKeyVault": {
@@ -133,9 +80,62 @@
                     "vnetResourceGroupName": "PwS2-validate-sql-reporting-services-RG",
                     "vnetName": "PwS2-validate-sql-reporting-services-VNET",
                     "subnetName": "APP"
+                },
+                "tagValues": {
+                    "Owner": "john.nephin@tpsgc-pwgsc.gc.ca",
+                    "CostCenter": "PSPC-EA",
+                    "Enviroment": "Sandbox",
+                    "Classification": "Unclassified",
+                    "Organizations": "PSPC-CCC-E&O",
+                    "DeploymentVersion": "2019-01-24",
+                    "Workload": "Report Server"
                 }
             }
-        
+        },
+        "sqlSettings": {
+            "value": {
+                "dbSAUsername": "shared\\azureadmin",
+                "dbSAUserPasswordKey": "server2016DefaultPassword",
+                "sqlLB": "10.250.2.8",
+                "sqlServerLicenseType": "AHUB",
+                "numberOfSqlVMDisks": 1,
+                "sqlpatchingConfig": {
+                    "patchingEnabled": true,
+                    "dayOfWeek": "Sunday",
+                    "maintenanceWindowStartingHour": "2",
+                    "maintenanceWindowDuration": 60
+                },
+                "backupConfig": {
+                    "backupEnabled": true,
+                    "RetentionPeriod": 30,
+                    "EnableEncryption": true
+                },
+                "rServicesEnabled": true,
+                "sqlBackupConfig": {
+                    "backupEnabled": true,
+                    "retentionPeriod": 30,
+                    "enableEncryption": true,
+                    "backupSystemDbs": true,
+                    "backupScheduleType": "Manual",
+                    "fullBackupFrequency": "Daily",
+                    "fullBackupStartTime": 2,
+                    "fullBackupWindowHours": 5,
+                    "logBackupFrequency": 60,
+                    "password": "Canada123!"
+                },
+                "workloadType": "OLTP",
+                "sqlConnectivityType": "Private",
+                "sqlPortNumber": 1433,
+                "sqlStorageDisksConfigurationType": "NEW",
+                "sqlStorageStartingDeviceId": 2,
+                "sqlServerServiceAccountUserName": "svc-spsql1",
+                "sqlStorageAccountName": "ssrsstorage1",
+                "sqlStorageAccountType": "Standard_LRS",
+                "diagBlobEncryptionEnabled": true,
+                "sqlDatabases": "TestDB",
+                "sqlServerServiceAccountPassword": "sqlServerServiceAccountPassword",
+                "enableAcceleratedNetworking": false
+            }
         }
     }
 }
