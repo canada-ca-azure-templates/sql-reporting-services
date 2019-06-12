@@ -51,6 +51,15 @@
         },
         "vmObject": {
             "value": {
+                "tagValues": {
+                    "Owner": "john.nephin@tpsgc-pwgsc.gc.ca",
+                    "CostCenter": "PSPC-EA",
+                    "Enviroment": "Sandbox",
+                    "Classification": "Unclassified",
+                    "Organizations": "PSPC-CCC-E&O",
+                    "DeploymentVersion": "2019-01-24",
+                    "Workload": "Report Server"
+                },
                 "comment": "This is for the sql server reporting services",
                 "resourceGroup": "PwS2-validate-sql-reporting-services-RG",
                 "vmKeyVault": {
@@ -69,6 +78,7 @@
                 "vm": {
                     "computerName": "PwS2-RS",
                     "adminUsername": "azureadmin",
+                    "adminPassword": "server2016DefaultPassword",
                     "licenseType": "Windows_Server",
                     "shutdownConfig": {
                         "autoShutdownStatus": "Enabled",
@@ -77,6 +87,16 @@
                         "autoShutdownNotificationStatus": "Disabled"
                     },
                     "vmSize": "Standard_DS3_v2",
+                    "antimalwareInfo": {
+                        "exclusionPaths": "C:\\Program Files\\Microsoft SQL Server;c:\\WindowsAzure",
+                        "exclusionExtensions": ".mdf;.ldf;.ndf;.bak;.trn;.trc;.sqlaudit;.sql",
+                        "exclusionProcesses": "w3wp.exe;explorer.exe;sqlservr.exe;reportingservicesservice.exe;msmdsrv.exe;WaAppAgent.exe;WindowsAzureTelemetryService.exe;WindowsAzureGuestAgent.exe",
+                        "realtimeProtectionEnabled": "true",
+                        "scheduledScanSettingsEnabled": "false",
+                        "scheduledScanSettingsType": "Full",
+                        "scheduledScanSettingsDay": "1",
+                        "scheduledScanSettingsTime": "120"
+                    },
                     "bootDiagnostic": true,
                     "backupConfig": {
                         "existingBackupVaultRG": "PwS2-validate-sql-reporting-services-RG",
@@ -91,8 +111,7 @@
                                 "storageAccountType": "StandardSSD_LRS"
                             }
                         },
-                        "dataDisks": [                         
-                        ],
+                        "dataDisks": [],
                         "imageReference": {
                             "publisher": "MicrosoftSQLServer",
                             "offer": "SQL2016SP2-WS2016",
@@ -103,28 +122,20 @@
                     "availabilitySetName": "PwS2-RS-AS"
                 },
                 "networkSecurityGroups": {
-                    "name": "PwS2-RS-NSG",
+                    "name": "NSG",
                     "properties": {
                         "securityRules": []
                     }
                 },
                 "networkInterfaces": {
-                    "name": "PwS2-RS1-NIC",
+                    "name": "NIC",
                     "acceleratedNetworking": false,
                     "vnetResourceGroupName": "PwS2-validate-sql-reporting-services-RG",
                     "vnetName": "PwS2-validate-sql-reporting-services-VNET",
                     "subnetName": "APP"
-                },
-                "tagValues": {
-                    "Owner": "test.server@tpsgc-pwgsc.gc.ca",
-                    "CostCenter": "PSPC-EA",
-                    "Enviroment": "Sandbox",
-                    "Classification": "Unclassified",
-                    "Organizations": "PSPC-CCC-E&O",
-                    "DeploymentVersion": "2019-01-24",
-                    "Workload": "Report Server"
                 }
             }
+        
         }
     }
 }

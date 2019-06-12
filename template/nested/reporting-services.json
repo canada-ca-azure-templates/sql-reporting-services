@@ -15,9 +15,6 @@
             },
             "defaultValue": "[concat(uri(deployment().properties.templateLink.uri, 'DSC'))]"
         },
-        "sqlLb":{
-            "type": "string"
-        },
         "adminUsername":{
             "type": "string"
         },
@@ -26,6 +23,9 @@
             "metadata": {
                 "description": "password passed in by keyvault"
             }
+        },
+        "sqlLb":{
+            "type": "string"
         },
         "tagValues":{
             "type": "object",
