@@ -15,7 +15,7 @@
                 },
                 "domainObject": {
                     "domainToJoin": "pspc.gc.ca.local",
-                    "domainUsername": "azureadmin",
+                    "domainSecretUsername": "azureadmin",
                     "domainAdminPasswordKey": "adDefaultPassword",
                     "domainJoinOptions": 3,
                     "ouPath": "CN=Computers,DC=shared,DC=pws3,DC=pspc,DC=gc,DC=ca, DC=local"
@@ -47,7 +47,7 @@
                     "bootDiagnostic": true,
                     "backupConfig": {
                         "existingBackupVaultRG": "PwS2-validate-sql-reporting-services-RG",
-                        "existingBackupVaultName": "PwS2-SSRS-Backup131r-Vault",
+                        "existingBackupVaultName": "PwS2-Sql-BackupVault131f",
                         "existingBackupPolicy": "DailyBackupPolicy"
                     },
                     "storageProfile": {
