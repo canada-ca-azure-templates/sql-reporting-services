@@ -94,8 +94,8 @@
         },
         "sqlSettings": {
             "value": {
-                "dbSAUsername": "pspc.gc.ca.local\\azureadmin",
-                "dbSAUserPasswordKey": "adDefaultPassword",
+                "dbSAUsername": "pspc\\svc-spsql1",
+                "dbSAUserPasswordKey": "sqlServerServiceAccountPassword",
                 "sqlLB": "10.250.2.8",
                 "sqlServerLicenseType": "AHUB",
                 "numberOfSqlVMDisks": "1",
