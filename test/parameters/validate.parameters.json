@@ -15,7 +15,7 @@
                 },
                 "domainObject": {
                     "domainToJoin": "pspc.gc.ca.local",
-                    "domainUserSecretName": "azureadmin",
+                    "domainUserSecretName": "defaultAdminUsername",
                     "domainAdminPasswordKey": "adDefaultPassword",
                     "domainJoinOptions": 3,
                     "ouPath": "CN=Computers,DC=shared,DC=pws3,DC=pspc,DC=gc,DC=ca, DC=local"
