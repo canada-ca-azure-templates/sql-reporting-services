@@ -78,7 +78,7 @@
                     "name": "NIC",
                     "acceleratedNetworking": false,
                     "vnetResourceGroupName": "PwS2-validate-sql-reporting-services-RG",
-                    "vnetName": "PwS2-validate-sql-reporting-services-VNET",
+                    "vnetName": "PwS2-validate-sql-server-cluster-VNET",
                     "subnetName": "APP"
                 },
                 "tagValues": {
