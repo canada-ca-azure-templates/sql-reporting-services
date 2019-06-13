@@ -1,0 +1,23 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "containerSasToken": {
+            "value": ""
+        },
+        "storageArray": {
+            "value": [
+                {
+                    "comment": "diagnostic storage account for SSRS and CRM",
+                    "resourceGroup": "PwS2-validate-sql-reporting-services-RG",
+                    "storageAccountPrefix": "vmdiag",
+                    "accountType": "Standard_LRS",
+                    "kind": "StorageV2",
+                    "supportsHttpsTrafficOnly": true,
+                    "diagBlobEncryptionEnabled": true
+                }
+                
+            ]
+        }
+    }
+}
