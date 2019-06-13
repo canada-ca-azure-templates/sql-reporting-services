@@ -23,7 +23,7 @@
                 "numberOfVMInstances": 1,
                 "deploymentSuffix": "PwS2-RS",
                 "vm": {
-                    "computerName": "PwS2-RS",
+                    "computerName": "PwS2-server-RS",
                     "adminUsername": "azureadmin",
                     "adminPassword": "server2016DefaultPassword",
                     "licenseType": "Windows_Server",
