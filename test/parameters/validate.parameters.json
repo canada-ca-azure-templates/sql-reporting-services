@@ -134,7 +134,8 @@
                 "diagBlobEncryptionEnabled": true,
                 "sqlDatabases": "TestDB",
                 "sqlServerServiceAccountPassword": "sqlServerServiceAccountPassword",
-                "enableAcceleratedNetworking": false
+                "enableAcceleratedNetworking": false,
+                "blobEncryptionEnabled": false
             }
         }
     }
