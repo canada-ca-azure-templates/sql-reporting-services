@@ -98,7 +98,7 @@
                 "dbSAUserPasswordKey": "server2016DefaultPassword",
                 "sqlLB": "10.250.2.8",
                 "sqlServerLicenseType": "AHUB",
-                "numberOfSqlVMDisks": 1,
+                "numberOfSqlVMDisks": "1",
                 "sqlpatchingConfig": {
                     "patchingEnabled": true,
                     "dayOfWeek": "Sunday",
