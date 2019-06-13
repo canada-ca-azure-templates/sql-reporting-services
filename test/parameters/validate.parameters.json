@@ -135,7 +135,7 @@
                 "sqlDatabases": "TestDB",
                 "sqlServerServiceAccountPassword": "sqlServerServiceAccountPassword",
                 "enableAcceleratedNetworking": false,
-                "blobEncryptionEnabled": false
+                "blobEncryptionEnabled": true
             }
         }
     }
