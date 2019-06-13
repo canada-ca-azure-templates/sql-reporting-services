@@ -18,15 +18,6 @@
                     "dependsOn": [
                         "resource-groups"
                     ]
-                },
-                {
-                    "name": "vmdiag-storage",
-                    "location": "canadacentral",
-                    "templateLink": "https://raw.githubusercontent.com/canada-ca-azure-templates/storage/20190430/template/azuredeploy.json",
-                    "parametersFile": "dependancy-vmdiagstorage.parameters.json",
-                    "dependsOn": [
-                        "resource-groups"
-                    ]
                 }
             ]
         },
@@ -55,6 +46,15 @@
                     "resourceGroup": "PwS2-validate-sql-reporting-services-RG",
                     "templateLink": "https://raw.githubusercontent.com/canada-ca-azure-templates/keyvaults/20190514/template/azuredeploy.json",
                     "parametersFile": "dependancy-keyvaults.parameters.json",
+                    "dependsOn": [
+                        "resource-groups"
+                    ]
+                },
+                {
+                    "name": "vmdiag-storage",
+                    "resourceGroup": "PwS2-validate-sql-reporting-services-RG",
+                    "templateLink": "https://raw.githubusercontent.com/canada-ca-azure-templates/storage/20190430/template/azuredeploy.json",
+                    "parametersFile": "dependancy-vmdiagstorage.parameters.json",
                     "dependsOn": [
                         "resource-groups"
                     ]
