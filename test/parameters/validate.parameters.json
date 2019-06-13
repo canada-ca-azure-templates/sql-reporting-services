@@ -18,7 +18,7 @@
                     "domainUserSecretName": "adDefaultPassword",
                     "domainUsername": "azureadmin",
                     "domainJoinOptions": 3,
-                    "ouPath": "CN=Computers,DC=shared,DC=pws3,DC=pspc,DC=gc,DC=ca, DC=local"
+                    "ouPath": ""
                 },
                 "numberOfVMInstances": 1,
                 "deploymentSuffix": "PwS2-RS",
