@@ -58,7 +58,10 @@
                                 "storageAccountType": "StandardSSD_LRS"
                             }
                         },
-                        "dataDisks": [],
+                        "dataDisks": {
+                            "numberOfSqlVMDisks": "2",
+                            "diskSizeGB": "1024"
+                        },
                         "imageReference": {
                             "publisher": "MicrosoftSQLServer",
                             "offer": "SQL2016SP2-WS2016",
