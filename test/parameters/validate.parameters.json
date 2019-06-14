@@ -98,7 +98,7 @@
                 "dbSAUserPasswordKey": "sqlServerServiceAccountPassword",
                 "sqlLB": "10.250.2.8",
                 "sqlServerLicenseType": "AHUB",
-                "numberOfSqlVMDisks": "1",
+                "numberOfSqlVMDisks": "2",
                 "sqlpatchingConfig": {
                     "patchingEnabled": true,
                     "dayOfWeek": "Sunday",
@@ -127,7 +127,7 @@
                 "sqlConnectivityType": "Private",
                 "sqlPortNumber": 1433,
                 "sqlStorageDisksConfigurationType": "NEW",
-                "sqlStorageStartingDeviceId": 1,
+                "sqlStorageStartingDeviceId": 2,
                 "sqlServerServiceAccountUserName": "svc-spsql1",
                 "sqlStorageAccountName": "ssrsstorage1",
                 "sqlStorageAccountType": "Standard_LRS",
