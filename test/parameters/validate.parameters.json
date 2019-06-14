@@ -127,7 +127,7 @@
                 "sqlConnectivityType": "Private",
                 "sqlPortNumber": 1433,
                 "sqlStorageDisksConfigurationType": "NEW",
-                "sqlStorageStartingDeviceId": 2,
+                "sqlStorageStartingDeviceId": 1,
                 "sqlServerServiceAccountUserName": "svc-spsql1",
                 "sqlStorageAccountName": "ssrsstorage1",
                 "sqlStorageAccountType": "Standard_LRS",
