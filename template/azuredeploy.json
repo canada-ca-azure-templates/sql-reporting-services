@@ -3,7 +3,8 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "containerSasToken": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": ""
         },
         "sqlSettings":{
             "type": "object",
@@ -148,6 +149,10 @@
                 "name": "vmObj",
                 "count": "[parameters('vmObject').numberOfVMInstances]"
             },
+            "dependsOn": [
+                "[concat('sqlbackup',uniquestring(parameters('sqlSettings').sqlStorageAccountName))]",
+                "[variables('availabilitySetName')]"
+            ],
             "properties": {
                 "mode": "Incremental",
                 "parameters": {
@@ -216,6 +221,27 @@
             }
         },
         {
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[concat('sqlbackup',uniquestring(parameters('sqlSettings').sqlStorageAccountName))]",
+            "apiVersion": "2019-04-01",
+            "location": "[resourceGroup().location]",
+            "tags": "[parameters('vmObject').tagValues]",
+            "kind": "Storage",
+            "sku": {
+              "name":"[parameters('sqlSettings').SqlStorageAccountType]"
+            },
+            "properties": {
+              "encryption": {
+                "keySource": "Microsoft.Storage",
+                "services": {
+                  "blob": {
+                    "enabled": "[parameters('sqlSettings').blobEncryptionEnabled]"
+                  }
+                }
+              }
+            }
+        },
+        {
             "name": "[concat('DSC-', parameters('vmObject').vm.computerName, copyIndex(1))]",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2017-05-10",
@@ -268,13 +294,27 @@
                     "workloadType": {
                         "value": "[parameters('sqlSettings').workloadType]"
                     },
-                    "sqlStorageAccountName": {
-                        "value": "[parameters('sqlSettings').sqlStorageAccountName]"
+                    "rServicesEnabled": {
+                        "value": "[parameters('sqlSettings').rServicesEnabled]"
+                    },
+                    "sqlConnectivityType":{
+                        "value": "[parameters('sqlSettings').sqlConnectivityType]"
+                    },
+                    "sqlPortNumber":{
+                        "value": "[parameters('sqlSettings').sqlPortNumber]"
+                    },
+                    "sqlStorageDisksConfigurationType":{
+                        "value":"[parameters('sqlSettings').sqlStorageDisksConfigurationType]"
+                    },
+                    "sqlStorageStartingDeviceId":{
+                        "value": "[parameters('sqlSettings').sqlStorageStartingDeviceId]"
                     },
                     "sqlServerLicenseType": {
                         "value": "[if(contains(parameters('sqlSettings'), 'sqlServerLicenseType'), parameters('sqlSettings').sqlServerLicenseType, 'PAYG')]"
+                    },
+                    "sqlStorageAccountName": {
+                        "value": "[parameters('sqlSettings').sqlStorageAccountName]"
                     }
-
                 },
                 "templateLink": {
                     "uri": "[variables('dscUrl')]",

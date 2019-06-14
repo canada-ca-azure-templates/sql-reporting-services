@@ -71,8 +71,8 @@ if (-not $doNotDeployPreReq) {
     # Start the deployment
     Write-Host "Starting $templateLibraryName dependancies deployment...";
 
-    New-AzureRmDeployment -Location $Location -Name "Deploy-$templateLibraryName-Dependancies-01" -TemplateUri "https://raw.githubusercontent.com/canada-ca-azure-templates/masterdeploy/20190514/template/masterdeploysubrg.json" -TemplateParameterFile (Resolve-Path -Path "$PSScriptRoot\parameters\masterdeploysub-01.parameters.json") -baseParametersURL $baseParametersURL -Verbose;
-    New-AzureRmDeployment -Location $Location -Name "Deploy-$templateLibraryName-Dependancies-02" -TemplateUri "https://raw.githubusercontent.com/canada-ca-azure-templates/masterdeploy/20190514/template/masterdeployrg.json" -TemplateParameterFile (Resolve-Path -Path "$PSScriptRoot\parameters\masterdeploysub-02.parameters.json") -baseParametersURL $baseParametersURL -Verbose;
+    #New-AzureRmDeployment -Location $Location -Name "Deploy-$templateLibraryName-Dependancies-01" -TemplateUri "https://raw.githubusercontent.com/canada-ca-azure-templates/masterdeploy/20190514/template/masterdeploysubrg.json" -TemplateParameterFile (Resolve-Path -Path "$PSScriptRoot\parameters\masterdeploysub-01.parameters.json") -baseParametersURL $baseParametersURL -Verbose;
+    #New-AzureRmDeployment -Location $Location -Name "Deploy-$templateLibraryName-Dependancies-02" -TemplateUri "https://raw.githubusercontent.com/canada-ca-azure-templates/masterdeploy/20190514/template/masterdeploysubrg.json" -TemplateParameterFile (Resolve-Path -Path "$PSScriptRoot\parameters\masterdeploysub-02.parameters.json") -baseParametersURL $baseParametersURL -Verbose;
 
     $provisionningState = (Get-AzureRmDeployment -Name "Deploy-$templateLibraryName-Dependancies-01").ProvisioningState
     $provisionningState2 = (Get-AzureRmDeployment -Name "Deploy-$templateLibraryName-Dependancies-02").ProvisioningState
@@ -85,9 +85,9 @@ if (-not $doNotDeployPreReq) {
 # Validating server template
 Write-Host "Starting $templateLibraryName validation deployment...";
 
-New-AzureRmResourceGroupDeployment -ResourceGroupName PwS2-validate-$templateLibraryName-RG -Name "validate-$templateLibraryName-template" -TemplateUri $validationURL -TemplateParameterFile (Resolve-Path "$PSScriptRoot\parameters\validate.parameters.json") -Verbose -DeploymentDebugLogLevel All
+New-AzureRmResourceGroupDeployment -ResourceGroupName PwS2-validate-$templateLibraryName-RG -Name "validate-$templateLibraryName-template" -TemplateUri $validationURL -TemplateParameterFile (Resolve-Path "$PSScriptRoot\parameters\validate.parameters.json") -Verbose 
 
-#Test-AzureRmResourceGroupDeployment -ResourceGroupName PwS2-validate-$templateLibraryName-RG -TemplateUri $validationURL -TemplateParameterFile (Resolve-Path "$PSScriptRoot\parameters\validate.parameters.json") -Verbose -DeploymentDebugLogLevel All
+#Test-AzureRmResourceGroupDeployment -ResourceGroupName PwS2-validate-$templateLibraryName-RG -TemplateUri $validationURL -TemplateParameterFile (Resolve-Path "$PSScriptRoot\parameters\validate.parameters.json") -Verbose 
 
 $provisionningState = (Get-AzureRmResourceGroupDeployment -ResourceGroupName PwS2-validate-$templateLibraryName-RG -Name "validate-$templateLibraryName-template").ProvisioningState
 

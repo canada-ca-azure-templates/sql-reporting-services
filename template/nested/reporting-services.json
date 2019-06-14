@@ -15,9 +15,6 @@
             },
             "defaultValue": "[concat(uri(deployment().properties.templateLink.uri, 'DSC'))]"
         },
-        "sqlLb":{
-            "type": "string"
-        },
         "adminUsername":{
             "type": "string"
         },
@@ -27,8 +24,12 @@
                 "description": "password passed in by keyvault"
             }
         },
+        "sqlLb":{
+            "type": "string"
+        },
         "tagValues":{
-            "type": "object"
+            "type": "object",
+            "defaultValue": ""
         },
         "sqlPatchingConfig": {
             "type": "object"
@@ -118,7 +119,7 @@
             "apiVersion": "2017-03-01-preview",
             "location": "[resourceGroup().location]",
             "properties": {
-                "virtualMachineResourceId": "[resourceId('Microsoft.Compute/virtualMachines', concat(parameters('sqlVMName'),copyIndex()))]",
+                "virtualMachineResourceId": "[resourceId('Microsoft.Compute/virtualMachines', parameters('computerName'))]",
                 "SqlServerLicenseType": "[parameters('sqlServerLicenseType')]",
                 "AutoPatchingSettings": {
                     "Enable": "[parameters('sqlPatchingConfig').patchingEnabled]",
@@ -142,7 +143,7 @@
                 },
                 "KeyVaultCredentialSettings": 
                 {
-                  "Enable": "[parameters('keyVaultCredentialSettings').Enabled]",
+                  "Enable": "[parameters('keyVaultCredentialSettings').Enable]",
                     "CredentialName": "[parameters('keyVaultCredentialSettings').CredentialName]"
                 },
                 "ServerConfigurationsManagementSettings": {
