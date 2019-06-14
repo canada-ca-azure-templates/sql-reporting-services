@@ -94,7 +94,7 @@
         },
         "sqlSettings": {
             "value": {
-                "dbSAUsername": "pspc\\svc-spsql1",
+                "dbSAUsername": "pspc\\azureadmin",
                 "dbSAUserPasswordKey": "sqlServerServiceAccountPassword",
                 "sqlLB": "10.250.2.8",
                 "sqlServerLicenseType": "AHUB",
